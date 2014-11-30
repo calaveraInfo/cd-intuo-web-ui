@@ -18,6 +18,12 @@
       },
       {
          "path": "app/override/Component.js"
+      },
+      {
+         "path": "app/profile/Tablet.js"
+      },
+      {
+         "path": "app/profile/Phone.js"
       }
    ],
    "css": [
@@ -54,5 +60,5 @@
    "archivePath": "archive",
    "requires": [],
    "id": "3ccfd8f0-9bec-48ba-bae4-55f653127639",
-   "classpath": "${app.dir}/app,${app.dir}/app/override/"
+   "classpath": "${app.dir}/app,${app.dir}/app/override/,${app.dir}/app/profile/"
 }

@@ -32,6 +32,9 @@
             "ConsultationCare"
         ],
         "name": "CestaDomu",
+        "profiles": [
+            "['Phone', 'Tablet']"
+        ],
         "requires": [
             "Lib.IntuoProxy",
             "Lib.IntuoWriter",
@@ -74,13 +77,22 @@
             "MainContainer",
             "ClientsView",
             "RoleSelectView",
-            "ClientDetailView",
             "WorkReportsView",
             "NewNurseCareView",
             "SaveUsernameHelp"
         ]
     },
+    "configAlternates": {
+        "profiles": "array"
+    },
     "designerId": "application",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "profiles",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "Ext.Loader",

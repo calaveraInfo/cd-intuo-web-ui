@@ -51,6 +51,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "CestaDomu.model.TimeNumber": [],
   "CestaDomu.model.WorkReport": [],
   "CestaDomu.override.Component": [],
+  "CestaDomu.profile.Phone": [],
+  "CestaDomu.profile.Tablet": [],
   "CestaDomu.store.ConsultationCareStore": [],
   "CestaDomu.store.ContactsStore": [],
   "CestaDomu.store.DoctorCareStore": [],
@@ -66,6 +68,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "CestaDomu.store.WorkReportIntervals": [],
   "CestaDomu.store.WorkReportsStore": [],
   "CestaDomu.view.ClientDetailView": [],
+  "CestaDomu.view.ClientDetailViewPhone": [],
   "CestaDomu.view.ClientsView": [],
   "CestaDomu.view.LoginView": [],
   "CestaDomu.view.Main": [],
@@ -838,6 +841,8 @@ Ext.ClassManager.addNameAliasMappings({
   "CestaDomu.model.TimeNumber": [],
   "CestaDomu.model.WorkReport": [],
   "CestaDomu.override.Component": [],
+  "CestaDomu.profile.Phone": [],
+  "CestaDomu.profile.Tablet": [],
   "CestaDomu.store.ConsultationCareStore": [],
   "CestaDomu.store.ContactsStore": [],
   "CestaDomu.store.DoctorCareStore": [],
@@ -853,6 +858,9 @@ Ext.ClassManager.addNameAliasMappings({
   "CestaDomu.store.WorkReportIntervals": [],
   "CestaDomu.store.WorkReportsStore": [],
   "CestaDomu.view.ClientDetailView": [
+    "widget.clientDetailView"
+  ],
+  "CestaDomu.view.ClientDetailViewPhone": [
     "widget.clientDetailView"
   ],
   "CestaDomu.view.ClientsView": [

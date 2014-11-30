@@ -28,39 +28,54 @@ Ext.define('CestaDomu.controller.ClientDetailController', {
         refs: {
             clientDetailView: {
                 autoCreate: true,
-                selector: 'clientDetailView',
+                selector: '#clientDetailView',
                 xtype: 'clientDetailView'
             },
             mainContainer: 'mainContainer',
-            clientDetailTitle: 'clientDetailView toolbar',
-            quickInfo: 'clientDetailView #quickInfo',
-            nurseCareInfo: 'clientDetailView #clientInfoContainer #nurseCareInfo',
-            menu: 'clientDetailView #menu',
-            drugList: 'clientDetailView #drugContainer list',
-            nurseCareList: 'clientDetailView #clientInfoContainer list',
+            clientDetailTitle: '#clientDetailView toolbar',
+            tabName: '#clientDetailView #tabName',
+            quickInfo: '#clientDetailView #quickInfo',
+            nurseCareInfo: '#clientDetailView #clientInfoContainer #nurseCareInfo',
+            menu: '#clientDetailView #menu',
+            drugList: '#clientDetailView #drugContainer list',
+            nurseCareList: '#clientDetailView #clientInfoContainer list',
             doctorCareList: '#doctorContainer list',
             consultationCareList: '#consultationContainer list',
             doctorCareInfo: '#doctorContainer #doctorCareInfo',
-            consultationCareInfo: '#consultationContainer #consultationCareInfo'
+            consultationCareInfo: '#consultationContainer #consultationCareInfo',
+            nurseMenuButton: 'container #nurse',
+            fullClientInfo: '#clientDetailView #fullClientInfo'
         },
 
         control: {
-            "clientDetailView #clientInfoContainer list": {
+            "container #clientInfoContainer list": {
                 select: 'onCareListItemTap'
             },
-            "clientDetailView #doctorContainer list": {
+            "container #doctorContainer list": {
                 select: 'onDoctorListItemTap'
             },
-            "clientDetailView #consultationContainer list": {
+            "container #consultationContainer list": {
                 select: 'onConsultantListItemTap'
             },
-            "clientDetailView #menu button": {
-                tap: 'onMenuButton'
+            "container #drug": {
+                tap: 'onDrugMenuButtonTap'
             },
-            "clientDetailView #newRecord": {
+            "container #nurse": {
+                tap: 'onNurseMenuButtonTap'
+            },
+            "container #doctor": {
+                tap: 'onDoctorMenuButtonTap'
+            },
+            "container #consultation": {
+                tap: 'onConsultationMenuButtonTap'
+            },
+            "container #pacient": {
+                tap: 'onPacientMenuButtonTap'
+            },
+            "container #newRecord": {
                 tap: 'onNewRecord'
             },
-            "clientDetailView #back": {
+            "container #back": {
                 tap: 'onBack'
             }
         }
@@ -78,30 +93,44 @@ Ext.define('CestaDomu.controller.ClientDetailController', {
         this.getConsultationCareInfo().setHtml(this.consultantCareTemplate.apply(record.getData()));
     },
 
-    onMenuButton: function(button, e, eOpts) {
-        //Ext.Msg.alert('test');
-        switch (button.getItemId()) {
-            case 'nurse':
-                this.getClientDetailView().setActiveItem(0);
-                break;
-            case 'drug':
-                this.getClientDetailView().setActiveItem(1);
-                break;
-            case 'doctor':
-                this.getClientDetailView().setActiveItem(2);
-                break;
-            case 'consultation':
-                this.getClientDetailView().setActiveItem(3);
-                break;
-        }
+    onDrugMenuButtonTap: function(button, e, eOpts) {
+        this.getClientDetailView().setActiveItem(1);
+        this.getTabName().setHtml(button.getText() + ':');
+        Ext.Viewport.hideMenu('left');
+    },
+
+    onNurseMenuButtonTap: function(button, e, eOpts) {
+        this.getClientDetailView().setActiveItem(0);
+        this.getTabName().setHtml(button.getText() + ':');
+        Ext.Viewport.hideMenu('left');
+    },
+
+    onDoctorMenuButtonTap: function(button, e, eOpts) {
+        this.getClientDetailView().setActiveItem(2);
+        this.getTabName().setHtml(button.getText() + ':');
+        Ext.Viewport.hideMenu('left');
+    },
+
+    onConsultationMenuButtonTap: function(button, e, eOpts) {
+        this.getClientDetailView().setActiveItem(3);
+        this.getTabName().setHtml(button.getText() + ':');
+        Ext.Viewport.hideMenu('left');
+    },
+
+    onPacientMenuButtonTap: function(button, e, eOpts) {
+        this.getClientDetailView().setActiveItem(4);
+        this.getTabName().setHtml(button.getText() + ':');
+        Ext.Viewport.hideMenu('left');
     },
 
     onNewRecord: function(button, e, eOpts) {
         this.getApplication().fireEvent("newNurseCareRequested", this.pacient.get('ID'));
+        Ext.Viewport.hideMenu('left');
     },
 
     onBack: function(button, e, eOpts) {
         this.getApplication().fireEvent("clientsView");
+        Ext.Viewport.hideMenu('left');
     },
 
     main: function(contactId, pacientId, name) {
@@ -112,7 +141,11 @@ Ext.define('CestaDomu.controller.ClientDetailController', {
             });
 
             this.getClientDetailView();// inicializace pomocí autocreate
-            this.getMenu().setPressedButtons([0]);
+            var firstMenuButton = this.getNurseMenuButton();
+            this.onNurseMenuButtonTap(firstMenuButton);
+            if (this.getMenu()) {
+                this.getMenu().setPressedButtons([0]);
+            }
 
             var Pacient = Ext.ModelManager.getModel('CestaDomu.model.Pacient');
 
@@ -156,7 +189,8 @@ Ext.define('CestaDomu.controller.ClientDetailController', {
                         }
                     }, this);
 
-                    this.getQuickInfo().setHtml(this.quickInfoTemplate.apply(pacient.getData()));
+                    this.getQuickInfo().setHtml(this.getClientDetailView().quickInfoTemplate.apply(pacient.getData()));
+                    this.getFullClientInfo().setHtml(this.getClientDetailView().fullInfoTemplate.apply(pacient.getData()));
                     this.getMainContainer().setActiveItem(this.getClientDetailView());
                     messageBox.hide();
                 },

@@ -1,0 +1,13 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js1",
+        "url": "app/profile/Phone.js"
+    },
+    "designerId": "32067d09-60db-4270-8132-b8f335797f75"
+}

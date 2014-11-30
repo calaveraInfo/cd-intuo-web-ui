@@ -32,8 +32,12 @@
                     "    });\r",
                     "\r",
                     "    this.getClientDetailView();// inicializace pomocí autocreate\r",
-                    "    this.getMenu().setPressedButtons([0]);\r",
-                    "\r",
+                    "    var firstMenuButton = this.getNurseMenuButton();\r",
+                    "    this.onNurseMenuButtonTap(firstMenuButton);\r",
+                    "    if (this.getMenu()) {\r",
+                    "        this.getMenu().setPressedButtons([0]);\r",
+                    "    }\r",
+                    "    \r",
                     "    var Pacient = Ext.ModelManager.getModel('CestaDomu.model.Pacient');\r",
                     "\r",
                     "    Pacient.load(pacientId, {\r",
@@ -76,7 +80,8 @@
                     "                }\r",
                     "            }, this);\r",
                     "\r",
-                    "            this.getQuickInfo().setHtml(this.quickInfoTemplate.apply(pacient.getData()));\r",
+                    "            this.getQuickInfo().setHtml(this.getClientDetailView().quickInfoTemplate.apply(pacient.getData()));\r",
+                    "            this.getFullClientInfo().setHtml(this.getClientDetailView().fullInfoTemplate.apply(pacient.getData()));\r",
                     "            this.getMainContainer().setActiveItem(this.getClientDetailView());\r",
                     "            messageBox.hide();\r",
                     "        },\r",
@@ -122,7 +127,7 @@
             "userConfig": {
                 "autoCreate": true,
                 "ref": "clientDetailView",
-                "selector": "clientDetailView",
+                "selector": "#clientDetailView",
                 "xtype": "clientDetailView"
             },
             "designerId": "06c5b4d6-3443-48f6-90ad-e77f8c5e71d5"
@@ -185,7 +190,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "clientDetailTitle",
-                "selector": "clientDetailView toolbar"
+                "selector": "#clientDetailView toolbar"
             },
             "designerId": "c70c645c-a24e-4317-92d3-74e3e3d6b6f1"
         },
@@ -197,8 +202,21 @@
             },
             "codeClass": null,
             "userConfig": {
+                "ref": "tabName",
+                "selector": "#clientDetailView #tabName"
+            },
+            "designerId": "64934d76-969d-406a-9ef5-0b5751a95c48"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "ref": "quickInfo",
-                "selector": "clientDetailView #quickInfo"
+                "selector": "#clientDetailView #quickInfo"
             },
             "designerId": "5fe3c674-b92f-4868-aecf-b8b8d09f8f4e"
         },
@@ -210,7 +228,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #clientInfoContainer list",
+                "designer|controlQuery": "container #clientInfoContainer list",
                 "designer|targetType": "Ext.dataview.List",
                 "fn": "onCareListItemTap",
                 "implHandler": [
@@ -228,7 +246,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #doctorContainer list",
+                "designer|controlQuery": "container #doctorContainer list",
                 "designer|targetType": "Ext.dataview.List",
                 "fn": "onDoctorListItemTap",
                 "implHandler": [
@@ -246,7 +264,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #consultationContainer list",
+                "designer|controlQuery": "container #consultationContainer list",
                 "designer|targetType": "Ext.dataview.List",
                 "fn": "onConsultantListItemTap",
                 "implHandler": [
@@ -265,7 +283,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "nurseCareInfo",
-                "selector": "clientDetailView #clientInfoContainer #nurseCareInfo"
+                "selector": "#clientDetailView #clientInfoContainer #nurseCareInfo"
             },
             "designerId": "ec15503b-26b1-496e-b6de-0150a8701d51"
         },
@@ -278,7 +296,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "menu",
-                "selector": "clientDetailView #menu"
+                "selector": "#clientDetailView #menu"
             },
             "designerId": "7f909fcf-b337-4e23-a4ff-82fb1cde9f64"
         },
@@ -290,29 +308,97 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #menu button",
+                "designer|controlQuery": "container #drug",
                 "designer|targetType": "Ext.Button",
-                "fn": "onMenuButton",
+                "fn": "onDrugMenuButtonTap",
                 "implHandler": [
-                    "//Ext.Msg.alert('test');\r",
-                    "switch (button.getItemId()) {\r",
-                    "    case 'nurse':\r",
-                    "        this.getClientDetailView().setActiveItem(0);\r",
-                    "        break;\r",
-                    "    case 'drug':\r",
-                    "        this.getClientDetailView().setActiveItem(1);\r",
-                    "        break;\r",
-                    "    case 'doctor':\r",
-                    "        this.getClientDetailView().setActiveItem(2);\r",
-                    "        break;\r",
-                    "    case 'consultation':\r",
-                    "        this.getClientDetailView().setActiveItem(3);\r",
-                    "        break;\r",
-                    "}"
+                    "this.getClientDetailView().setActiveItem(1);\r",
+                    "this.getTabName().setHtml(button.getText() + ':');\r",
+                    "Ext.Viewport.hideMenu('left');"
                 ],
                 "name": "tap"
             },
-            "designerId": "0003ef26-3fc5-41dd-9674-2b2f81975d86"
+            "designerId": "faababe6-f080-42aa-8e33-d8783ea71624"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "container #nurse",
+                "designer|targetType": "Ext.Button",
+                "fn": "onNurseMenuButtonTap",
+                "implHandler": [
+                    "this.getClientDetailView().setActiveItem(0);\r",
+                    "this.getTabName().setHtml(button.getText() + ':');\r",
+                    "Ext.Viewport.hideMenu('left');"
+                ],
+                "name": "tap"
+            },
+            "designerId": "4085a4a9-d54c-4211-89d4-97bda626ade7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "container #doctor",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDoctorMenuButtonTap",
+                "implHandler": [
+                    "this.getClientDetailView().setActiveItem(2);\r",
+                    "this.getTabName().setHtml(button.getText() + ':');\r",
+                    "Ext.Viewport.hideMenu('left');"
+                ],
+                "name": "tap"
+            },
+            "designerId": "790b04ce-a902-4f5e-ada2-9337ea6cf702"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "container #consultation",
+                "designer|targetType": "Ext.Button",
+                "fn": "onConsultationMenuButtonTap",
+                "implHandler": [
+                    "this.getClientDetailView().setActiveItem(3);\r",
+                    "this.getTabName().setHtml(button.getText() + ':');\r",
+                    "Ext.Viewport.hideMenu('left');"
+                ],
+                "name": "tap"
+            },
+            "designerId": "2b221c84-b58f-4c33-a937-2d6880bb9c32"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "container #pacient",
+                "designer|targetType": "Ext.Button",
+                "fn": "onPacientMenuButtonTap",
+                "implHandler": [
+                    "this.getClientDetailView().setActiveItem(4);\r",
+                    "this.getTabName().setHtml(button.getText() + ':');\r",
+                    "Ext.Viewport.hideMenu('left');"
+                ],
+                "name": "tap"
+            },
+            "designerId": "77b04094-8451-4822-93d6-a749196a78ae"
         },
         {
             "type": "controllerref",
@@ -323,7 +409,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "drugList",
-                "selector": "clientDetailView #drugContainer list"
+                "selector": "#clientDetailView #drugContainer list"
             },
             "designerId": "4d3b3853-f825-4bab-beab-fa37bc8f99e8"
         },
@@ -336,7 +422,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "nurseCareList",
-                "selector": "clientDetailView #clientInfoContainer list"
+                "selector": "#clientDetailView #clientInfoContainer list"
             },
             "designerId": "5fff4a19-c8ee-4ca2-a29d-5c625294d1a5"
         },
@@ -348,11 +434,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #newRecord",
+                "designer|controlQuery": "container #newRecord",
                 "designer|targetType": "Ext.Button",
                 "fn": "onNewRecord",
                 "implHandler": [
-                    "this.getApplication().fireEvent(\"newNurseCareRequested\", this.pacient.get('ID'));"
+                    "this.getApplication().fireEvent(\"newNurseCareRequested\", this.pacient.get('ID'));\r",
+                    "Ext.Viewport.hideMenu('left');"
                 ],
                 "name": "tap"
             },
@@ -366,11 +453,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "clientDetailView #back",
+                "designer|controlQuery": "container #back",
                 "designer|targetType": "Ext.Button",
                 "fn": "onBack",
                 "implHandler": [
-                    "this.getApplication().fireEvent(\"clientsView\");"
+                    "this.getApplication().fireEvent(\"clientsView\");\r",
+                    "Ext.Viewport.hideMenu('left');"
                 ],
                 "name": "tap"
             },
@@ -427,6 +515,32 @@
                 "selector": "#consultationContainer #consultationCareInfo"
             },
             "designerId": "32cf7862-c5d8-4315-9070-a18418458789"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "nurseMenuButton",
+                "selector": "container #nurse"
+            },
+            "designerId": "18a74ba6-0e13-4f4c-bb21-18abfe2e6d75"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "fullClientInfo",
+                "selector": "#clientDetailView #fullClientInfo"
+            },
+            "designerId": "874b0625-5cc4-41d0-ab7e-77d4f730d2fb"
         }
     ]
 }

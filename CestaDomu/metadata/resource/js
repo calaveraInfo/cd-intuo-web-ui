@@ -1,0 +1,13 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js",
+        "url": "app/profile/Tablet.js"
+    },
+    "designerId": "51e6334e-27ca-469d-9f9e-afac8ab878e7"
+}

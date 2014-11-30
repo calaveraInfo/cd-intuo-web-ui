@@ -6,17 +6,16 @@
     },
     "codeClass": null,
     "userConfig": {
-        "baseCls": null,
         "container|animation": "fade",
-        "designer|userAlias": null,
-        "designer|userClassName": "ClientDetailView",
+        "designer|userClassName": "ClientDetailViewPhone",
         "itemId": "clientDetailView",
         "layout": "card",
         "requires": [
-            "Ext.tab.Panel"
+            "Ext.tab.Panel",
+            "Ext.Menu"
         ]
     },
-    "designerId": "904356d9-e5e1-4ff8-97b3-c2ce9702d4d4",
+    "designerId": "a20d477f-a542-4b41-9622-d52fa4d82a44",
     "cn": [
         {
             "type": "Ext.Toolbar",
@@ -33,7 +32,7 @@
             "configAlternates": {
                 "title": "object"
             },
-            "designerId": "9fd04809-2b14-4d21-8d4d-8b7836216daa",
+            "designerId": "06b0ca90-b7aa-454b-b5af-a24f88548d12",
             "cn": [
                 {
                     "type": "Ext.Button",
@@ -43,110 +42,32 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|uiInterfaceName": "back",
-                        "itemId": "back",
-                        "text": "Klienti",
-                        "ui": "back"
+                        "designer|uiInterfaceName": "plain",
+                        "iconCls": "list",
+                        "itemId": "hamburgerMenuButton",
+                        "text": null,
+                        "ui": "plain"
                     },
-                    "designerId": "41e3f639-46db-46d5-9299-97fe45a9c334"
-                },
-                {
-                    "type": "Ext.SegmentedButton",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "itemId": "menu",
-                        "margin": 5
-                    },
-                    "designerId": "cb1a27b2-c928-4b38-b9f1-0221200f61b4",
+                    "designerId": "be72d044-a44e-44b3-b249-6abaf700e28f",
                     "cn": [
                         {
-                            "type": "Ext.Button",
+                            "type": "fixedfunction",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "itemId": "nurse",
-                                "menuItem": null,
-                                "text": "Průběhy"
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "Ext.Viewport.toggleMenu('left');"
+                                ]
                             },
-                            "configAlternates": {
-                                "menuItem": "number"
-                            },
-                            "designerId": "d6154613-2bac-4b2e-b905-09d2aa071d71",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "menuItem",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "drug",
-                                "menuItem": null,
-                                "text": "Medikace"
-                            },
-                            "configAlternates": {
-                                "menuItem": "number"
-                            },
-                            "designerId": "a81406ab-f8ea-4b5b-b206-649e848afdb9",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "menuItem",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "doctor",
-                                "menuItem": null,
-                                "text": "Lékařské"
-                            },
-                            "configAlternates": {
-                                "menuItem": "number"
-                            },
-                            "designerId": "a571a280-4925-4f3e-abb5-3ab04607d04b",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "menuItem",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "consultation",
-                                "text": "Konzultace"
-                            },
-                            "designerId": "45705e26-95a4-41b5-9407-c5794e8d76fb"
+                            "designerId": "663cd912-7beb-48d5-8e57-9e42e8fdfa02"
                         }
                     ]
                 },
@@ -158,13 +79,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "docked": null,
-                        "hidden": true,
-                        "html": null,
                         "itemId": "tabName",
-                        "margin": null
+                        "padding": "0 5 0 0"
                     },
-                    "designerId": "68ac7b3a-3ab2-4abd-8e00-5de29945713b"
+                    "designerId": "1de16c87-744c-4a66-b798-c939486726b4"
                 },
                 {
                     "type": "Ext.Label",
@@ -179,22 +97,7 @@
                         "itemId": "quickInfo",
                         "margin": null
                     },
-                    "designerId": "d1a5224c-c46d-4cc4-a093-5c55fd6954a3"
-                },
-                {
-                    "type": "Ext.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "docked": "right",
-                        "itemId": "newRecord",
-                        "text": "+",
-                        "width": 50
-                    },
-                    "designerId": "c234fcf4-4bb1-4a9a-9aa2-917db9c349a5"
+                    "designerId": "ffca37d9-2c1e-49ff-83c5-7796640819e5"
                 }
             ]
         },
@@ -207,11 +110,11 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "clientInfoContainer",
-                "layout": "hbox",
+                "layout": "vbox",
                 "margin": null,
                 "title": "Průběhy<br />péče"
             },
-            "designerId": "13c4ada3-a114-4ad0-97d1-d183fe71a882",
+            "designerId": "4729f81f-221c-4906-bd47-8b84f0823c6c",
             "customConfigs": [
                 {
                     "group": "(Custom Properties)",
@@ -233,7 +136,7 @@
                         "store": "NurseCareStore",
                         "width": null
                     },
-                    "designerId": "9b3464b7-75d5-46b2-a1be-ff14c3e4cdc5",
+                    "designerId": "4a1760c8-4868-4358-a1d8-c628a0b6ec4b",
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -249,7 +152,7 @@
                                     "{Name}"
                                 ]
                             },
-                            "designerId": "3244a831-0d3b-4ff7-bea3-1a452c672411"
+                            "designerId": "82ee9b9c-1905-415b-984e-37ccad2cfa02"
                         }
                     ]
                 },
@@ -266,9 +169,10 @@
                         "layout|flex": 50,
                         "margin": 5,
                         "scrollable": "vertical",
+                        "style": "border-top: solid black 5px;",
                         "width": null
                     },
-                    "designerId": "c6b5df6c-18c7-4fba-af3b-c293149a1bb3"
+                    "designerId": "1b797e69-ebe4-4f51-9860-2cb7d7e18008"
                 }
             ]
         },
@@ -284,7 +188,7 @@
                 "layout": "fit",
                 "title": "Medikace"
             },
-            "designerId": "120bfb31-989b-45d5-bba1-475eb0e75064",
+            "designerId": "69055788-5551-4b2c-ab2c-4ac1e16f2a69",
             "customConfigs": [
                 {
                     "group": "(Custom Properties)",
@@ -304,7 +208,7 @@
                         "grouped": true,
                         "store": "DrugStore"
                     },
-                    "designerId": "307234ba-127b-48b0-b32f-426dd22b3e32",
+                    "designerId": "4cc2ba0f-41a5-46ce-aa46-ccd5430b823a",
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -321,7 +225,7 @@
                                     "<tpl if=\"interval\">, interval další aplikace: {interval}</tpl><tpl if=\"maxDose\">, maximálně {maxDose}</tpl><tpl if=\"note\">, {note}</tpl>"
                                 ]
                             },
-                            "designerId": "1a002422-30af-47e3-b874-47ea0a396244"
+                            "designerId": "cd11e62a-5355-4094-a58b-45e004426f0b"
                         }
                     ]
                 }
@@ -337,10 +241,10 @@
             "userConfig": {
                 "html": null,
                 "itemId": "doctorContainer",
-                "layout": "hbox",
+                "layout": "vbox",
                 "margin": null
             },
-            "designerId": "c1401bcb-2653-40d0-961f-08a3d4de72e0",
+            "designerId": "22c84ee0-c646-4efc-aedc-b1636ff8ca98",
             "cn": [
                 {
                     "type": "Ext.dataview.List",
@@ -354,7 +258,7 @@
                         "layout|flex": 50,
                         "store": "DoctorCareStore"
                     },
-                    "designerId": "0b7b6103-3371-4e4a-8606-41143f335885",
+                    "designerId": "e69e509a-8070-42bc-b4f7-0af2bedb1286",
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -370,7 +274,7 @@
                                     "{medicalReporttype}"
                                 ]
                             },
-                            "designerId": "4d2cbadc-4a78-4510-a7a9-9f3888e473bb"
+                            "designerId": "0fdde638-f91b-4b99-8781-3a40f4de6189"
                         }
                     ]
                 },
@@ -385,9 +289,10 @@
                         "itemId": "doctorCareInfo",
                         "layout|flex": 50,
                         "margin": 5,
-                        "scrollable": "vertical"
+                        "scrollable": "vertical",
+                        "style": "border-top: solid black 5px;"
                     },
-                    "designerId": "acfda3f2-668c-4aed-83c8-4b67c1ce69dd"
+                    "designerId": "e2946b91-ff33-48ab-be2a-f4a66a1f8193"
                 }
             ]
         },
@@ -401,9 +306,9 @@
             "userConfig": {
                 "html": null,
                 "itemId": "consultationContainer",
-                "layout": "hbox"
+                "layout": "vbox"
             },
-            "designerId": "9f1111e7-fb8c-4be4-83f3-88b66bb344c2",
+            "designerId": "49c9ede4-770e-4e7f-a8a0-970689470181",
             "cn": [
                 {
                     "type": "Ext.dataview.List",
@@ -413,11 +318,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "border": null,
                         "itemId": null,
                         "layout|flex": 50,
                         "store": "ConsultationCareStore"
                     },
-                    "designerId": "40c5f567-6c35-410f-afdb-28e0d589293d",
+                    "designerId": "b9617619-bff4-4b3d-bc4e-266c9e9e4177",
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -433,7 +339,7 @@
                                     "{zaverecnaDohoda}"
                                 ]
                             },
-                            "designerId": "a0d62a3a-e4c8-4a0a-94d9-3131635b22e9"
+                            "designerId": "e99f6215-d690-4504-a788-a4ffb13f6b0a"
                         }
                     ]
                 },
@@ -445,12 +351,14 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "border": null,
                         "itemId": "consultationCareInfo",
                         "layout|flex": 50,
                         "margin": 5,
-                        "scrollable": "vertical"
+                        "scrollable": "vertical",
+                        "style": "border-top: solid black 5px;"
                     },
-                    "designerId": "857e6874-a99a-434d-b610-3912de420c1e"
+                    "designerId": "e65d83c0-e1e3-4f69-90a6-330fdf288a62"
                 }
             ]
         },
@@ -464,7 +372,7 @@
             "userConfig": {
                 "itemId": "fullClientInfo"
             },
-            "designerId": "8096b31f-076f-4af4-865c-f879c58f3caf"
+            "designerId": "8a26453a-fd4c-4d52-8969-2ed208b6278e"
         },
         {
             "type": "basicfunction",
@@ -478,16 +386,100 @@
                 "implHandler": [
                     "this.callParent(arguments);\r",
                     "this.quickInfoTemplate = new Ext.XTemplate(\r",
-                    "    '{Name}<tpl if=\"contactPerson\">, <a href=\"http://mapy.cz/?q={street}, {city}\" style=\"color: #99CCFF; text-decoration: none;\" target=\"_blank\">{street}, {city}</a></tpl><br/>',\r",
-                    "    '<tpl if=\"contactPerson\">Pečující: {contactPerson}<tpl if=\"mobileNumber\">, {mobilePrefix} {mobileNumber}</tpl><tpl if=\"phoneNumber\">, {phonePrefix} {phoneNumber}</tpl></tpl><tpl if=\"!contactPerson\">Pečující osoba není zadána</tpl>'\r",
+                    "    '{Name}'\r",
                     ");\r",
                     "this.fullInfoTemplate = new Ext.XTemplate(\r",
-                    "    '{Name}<tpl if=\"contactPerson\">, <a href=\"http://mapy.cz/?q={street}, {city}\" style=\"color: #99CCFF; text-decoration: none;\" target=\"_blank\">{street}, {city}</a></tpl><br/>',\r",
-                    "    '<tpl if=\"contactPerson\">Pečující: {contactPerson}<tpl if=\"mobileNumber\">, {mobilePrefix} {mobileNumber}</tpl><tpl if=\"phoneNumber\">, {phonePrefix} {phoneNumber}</tpl></tpl><tpl if=\"!contactPerson\">Pečující osoba není zadána</tpl>'\r",
+                    "    '<div style=\"padding: 5px;\"><h2>{Name}</h2>',\r",
+                    "    '<tpl if=\"contactPerson\">',\r",
+                    "    '<a href=\"http://mapy.cz/?q={street}, {city}\" style=\"color: #99CCFF; text-decoration: none;\" target=\"_blank\">{street}, {city}</a></tpl><br/>',\r",
+                    "    '<tpl if=\"contactPerson\">Pečující: {contactPerson}<br />',\r",
+                    "    '<tpl if=\"mobileNumber\">{mobilePrefix}{mobileNumber}<tpl if=\"phoneNumber\">, </tpl></tpl>',\r",
+                    "    '<tpl if=\"phoneNumber\">{phonePrefix}{phoneNumber}</tpl>',\r",
+                    "    '</tpl><tpl if=\"!contactPerson\">Pečující osoba nezadána</tpl></div>'\r",
                     ");"
                 ]
             },
-            "designerId": "94877525-0126-44b2-a71f-cea6db213dea"
+            "designerId": "5cfae06b-805a-4521-a040-3ce5e3063f5a"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "\r",
+                    "this.callParent();\r",
+                    "Ext.Viewport.setMenu(this.createMenu(), {\r",
+                    "    side: 'left',\r",
+                    "    cover: false\r",
+                    "});"
+                ]
+            },
+            "designerId": "cea32ff9-a515-4d77-8049-7ab61ea1289d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createMenu",
+                "implHandler": [
+                    "var items = [\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'back',\r",
+                    "        ui: 'back',\r",
+                    "        text: 'Zpět'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'pacient',\r",
+                    "        text: 'Pacient'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'nurse',\r",
+                    "        text: 'Průběhy'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "\r",
+                    "        itemId: 'drug',\r",
+                    "        text: 'Medikace'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'doctor',\r",
+                    "        text: 'Lékařské'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'consultation',\r",
+                    "        text: 'Konzultace'\r",
+                    "    },\r",
+                    "    {\r",
+                    "        xtype: 'button',\r",
+                    "        itemId: 'newRecord',\r",
+                    "        text: 'Přidat...'\r",
+                    "    }\r",
+                    "];\r",
+                    "\r",
+                    "return Ext.create('Ext.Menu', {\r",
+                    "    id: 'clientDetailMenu',\r",
+                    "    width: 200,\r",
+                    "    scrollable: 'vertical',\r",
+                    "    items: items\r",
+                    "});"
+                ]
+            },
+            "designerId": "0fe2dba3-33e6-4453-84e9-40da5c80c11b"
         }
     ]
 }

@@ -47,6 +47,10 @@ Ext.application({
         'CestaDomu.controller.GetEnumerationActiveDataByReference',
         'CestaDomu.controller.CreateObject'
     ],
+    profiles: [
+        'Phone',
+        'Tablet'
+    ],
     models: [
         'Contact',
         'Employee',
@@ -84,7 +88,6 @@ Ext.application({
         'MainContainer',
         'ClientsView',
         'RoleSelectView',
-        'ClientDetailView',
         'WorkReportsView',
         'NewNurseCareView',
         'SaveUsernameHelp'
