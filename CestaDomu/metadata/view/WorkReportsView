@@ -161,7 +161,7 @@
                             "</tpl>\r",
                             "<tpl if=\"!label\">\r",
                             "    <div style=\"background: red;\">\r",
-                            "        Chybný záznam\r",
+                            "        Chybný záznam {ID}\r",
                             "    </div>\r",
                             "</tpl>\r",
                             ""

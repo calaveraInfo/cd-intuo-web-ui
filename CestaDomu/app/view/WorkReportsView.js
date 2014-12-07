@@ -95,7 +95,7 @@ Ext.define('CestaDomu.view.WorkReportsView', {
                     '</tpl>',
                     '<tpl if="!label">',
                     '    <div style="background: red;">',
-                    '        Chybný záznam',
+                    '        Chybný záznam {ID}',
                     '    </div>',
                     '</tpl>',
                     ''

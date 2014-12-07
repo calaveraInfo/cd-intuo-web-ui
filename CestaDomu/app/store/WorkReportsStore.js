@@ -40,6 +40,7 @@ Ext.define('CestaDomu.store.WorkReportsStore', {
                 },
                 mappingType: 'xml',
                 mapping: {
+                    ID: 'c0',
                     TypeClass: 'c1',
                     start: 'c2',
                     durationtime: 'c3',
