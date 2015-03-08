@@ -376,8 +376,8 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
         worksheet.mergeCells('A'+data.length, 'C'+data.length);
 
         var stravenky = ['Počet stravenek:', '', ''];
-        data.push(stravenky);
-        worksheet.mergeCells('A'+data.length, 'C'+data.length);
+        // data.push(stravenky);
+        // worksheet.mergeCells('A'+data.length, 'C'+data.length);
 
         data.push(['']);
 
