@@ -175,7 +175,10 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
     isHoliday: function(day) {
         //http://www.mpsv.cz/cs/74
         var easterMonday = this.getEasterMonday(day.getFullYear());
+        var easterFriday = new Date(easterMonday.getTime());
+        easterFriday.setDate(easterFriday.getDate()-3);
         if (
+            (easterFriday.getDate() === day.getDate() && easterFriday.getMonth() === day.getMonth()) ||
             (easterMonday.getDate() === day.getDate() && easterMonday.getMonth() === day.getMonth()) ||
             (1 === day.getDate() && 0 === day.getMonth()) ||
             (1 === day.getDate() && 4 === day.getMonth()) ||
