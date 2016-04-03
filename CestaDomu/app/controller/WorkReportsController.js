@@ -318,7 +318,7 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
 
         sheet.setColumns([
             {width: 11},
-            {width: 5},
+            {width: 7},
             {width: 5},
             {width: 6},
             {width: 5},
@@ -423,8 +423,8 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
                    {value: 'SUM(H'+dataStartIndex+':H'+dataEndIndex+')', metadata: sumsMetadata},
                    {value: 'SUM(I'+dataStartIndex+':I'+dataEndIndex+')', metadata: sumsMetadata},
                    {value: 'SUM(J'+dataStartIndex+':J'+dataEndIndex+')', metadata: sumsMetadata},
-                   {value: '', metadata: sumsMetadata},
-                   {value: '', metadata: sumsMetadata},
+                   {value: '', metadata: {style: styles.tableHeaderStyle.id}},
+                   {value: '', metadata: {style: styles.tableHeaderStyle.id}},
                    {value: 'SUM(M'+dataStartIndex+':M'+dataEndIndex+')', metadata: sumsMetadata},
                    {value: 'SUM(N'+dataStartIndex+':N'+dataEndIndex+')', metadata: sumsMetadata}
                   ]);
