@@ -318,15 +318,15 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
 
         sheet.setColumns([
             {width: 11},
-            {width: 7},
-            {width: 5},
             {width: 6},
-            {width: 5},
-            {width: 5},
-            {width: 5},
-            {width: 5},
-            {width: 5},
-            {width: 5},
+            {width: 6},
+            {width: 6},
+            {width: 6},
+            {width: 6},
+            {width: 6},
+            {width: 3},
+            {width: 3},
+            {width: 3},
             {width: 11},
             {hidden: true},
             {hidden: true},
@@ -377,6 +377,12 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
         var prescas = ['Přesčas k proplacení:', '', ''];
         data.push(prescas);
         worksheet.mergeCells('A'+data.length, 'C'+data.length);
+
+        if (!timeFund) {
+            var soucetNepohotovosti = ['Součet nepohotovostí:', '', ''];
+            data.push(soucetNepohotovosti);
+            worksheet.mergeCells('A'+data.length, 'C'+data.length);
+        }
 
         var stravenky = ['Počet stravenek:', '', ''];
         // data.push(stravenky);
@@ -464,6 +470,16 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
         if (timeFund) {
             prescas.push({
                 value: 'D'+(dataStartIndex-1)+'-D'+kOdpracovaniIndex,
+                metadata: {
+                    type: 'formula',
+                    style: styles.statisticsStyle.id
+                }
+            });
+        }
+
+        if (!timeFund) {
+            soucetNepohotovosti.push({
+                value: 'B'+(dataStartIndex-1),
                 metadata: {
                     type: 'formula',
                     style: styles.statisticsStyle.id
@@ -635,7 +651,7 @@ Ext.define('CestaDomu.controller.WorkReportsController', {
             }
 
             data.push([
-                {value: (dny[row].xxx > 0) ? 'Chyba: v tomto dni existuji vykaz(y) prace, u nichz nebyla rozpoznana kategorie.' : Ext.Date.format(dny[row].den, 'd. m. Y'), metadata: dateMetadata},
+                {value: (dny[row].xxx > 0) ? 'Chyba: v tomto dni existuji vykaz(y) prace, u nichz nebyla rozpoznana kategorie.' : Ext.Date.format(dny[row].den, 'd.m.Y'), metadata: dateMetadata},
                 {value: dny[row].nepohotovost/60, metadata: workMetadata},
                 {value: dny[row].pohotovost/60, metadata: workMetadata},
                 praceCelkem,
